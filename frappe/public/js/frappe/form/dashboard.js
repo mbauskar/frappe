@@ -4,6 +4,7 @@
 frappe.ui.form.Dashboard = Class.extend({
 	init: function(opts) {
 		$.extend(this, opts);
+
 		this.wrapper = $(frappe.render_template('form_dashboard',
 			{frm: this.frm})).prependTo(this.frm.layout.wrapper);
 
@@ -116,7 +117,7 @@ frappe.ui.form.Dashboard = Class.extend({
 
 	refresh: function() {
 		this.reset();
-		if(this.frm.doc.__islocal) {
+		if(this.frm.doc.__islocal || (this.frm.meta.is_submittable && this.frm.doc.docstatus != 1)) {
 			return;
 		}
 
