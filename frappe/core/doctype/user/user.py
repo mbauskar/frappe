@@ -624,8 +624,10 @@ def setup_user_email_inbox(email_account, awaiting_password, email_id, enable_ou
 
 	if udpate_user_email_settings:
 		frappe.db.sql("""UPDATE `tabUser Email` SET awaiting_password = %(awaiting_password)s,
-			enable_outgoing = %(enable_outgoing)s WHERE email_account = %(email_account)s""", {
+			enable_outgoing = %(enable_outgoing)s, email_id=%(email_id)s 
+			WHERE email_account = %(email_account)s""", {
 				"email_account": email_account,
+				"email_id": email_id,
 				"enable_outgoing": enable_outgoing,
 				"awaiting_password": awaiting_password or 0
 			})
