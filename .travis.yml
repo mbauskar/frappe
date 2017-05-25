@@ -15,7 +15,7 @@ before_install:
 install:
   - sudo apt-get purge -y mysql-common mysql-server mysql-client
   - wget https://raw.githubusercontent.com/frappe/bench/master/playbooks/install.py
-  - sudo python install.py --develop --user travis --without-bench-setup
+  - sudo python install.py --develop --user travis --without-bench-setup --bench-branch develop
   - sudo pip install -e ~/bench
   - npm install -g testcafe
 
