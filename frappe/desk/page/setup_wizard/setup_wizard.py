@@ -35,10 +35,11 @@ def setup_complete(args):
 		update_system_settings(args)
 		update_user_name(args)
 
-		for method in frappe.get_hooks("setup_wizard_complete"):
-			frappe.get_attr(method)(args)
+		if not frappe.flags.in_test:
+			for method in frappe.get_hooks("setup_wizard_complete"):
+				frappe.get_attr(method)(args)
 
-		disable_future_access()
+			disable_future_access()
 
 		frappe.db.commit()
 		frappe.clear_cache()
