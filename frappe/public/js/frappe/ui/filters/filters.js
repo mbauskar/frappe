@@ -135,12 +135,8 @@ frappe.ui.FilterList = Class.extend({
 		// remove `filter` from flist
 		for (var i in this.filters) {
 			if (this.filters[i] === filter) {
-				break;
+				filter.remove();
 			}
-		}
-		if (i!==undefined) {
-			// remove index
-			this.splice(i, 1);
 		}
 	},
 
